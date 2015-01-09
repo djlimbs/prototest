@@ -1,0 +1,28 @@
+<div class="pad--sm--n">
+    <div class="input__icon--special juicon juicon-right"></div>
+    <ul class="list-style-type-none inline-block input-size mar--sm--n text-right float--right">
+        <li class="inline-block downVote colorToggle">
+            <label class="input-size pad--sm--ls pad--sm--rs">
+                <input type="checkbox">
+                {{!--{{input type="checkbox" checked=question.isSelected}}--}}
+            </label>
+        </li>
+    </ul>
+    
+    <div class="input-size pad--sm--m dots question-text">
+        {{question.Text__c}}
+    </div>
+    {{#if question.answers}}
+        <ul {{bind-attr class=":answer-list :hidden-item question.isRadioButton:radio-list"}}>
+            {{#each question.answers itemController="answer"}}
+                <li>
+                    {{Value__c}} 
+
+                    <span {{bind-attr class=":juicon scoreIcon :mar--sm--lm"}}></span>
+                </li>
+            {{/each}}
+        </ul>
+    {{else}}
+        {{partial question.questionPartial}}
+    {{/if}}
+</div>

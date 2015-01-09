@@ -1,0 +1,66 @@
+<div class="scope-container">
+    <div id="mobileCardView" style="display:none;">
+        <div class="table--fixed bg-1 relative has-radius related-item">
+            <div class="part__left--fixed card__feature--left">
+                <div class="avatar-container--md">
+                    <img src="https://dl.dropboxusercontent.com/u/234333568/questionSelectorProto/form-element.png" alt="">
+                </div>
+            </div>
+            <div class="part__body width--full pad--sm--rm pad--sm--tm">
+                <div class="dots" style="color: #3c3d3e;">Job Specific</div>
+            </div>
+        </div>
+    </div>
+    <div id="mobileMainView" class="content pad--md--tm pad--md--bl pad--sm--only--n" style="display:none;">
+        <nav id="pageNav" class="nav-bar--sf1 mar--sm--bn">
+            <button {{bind-attr class=":float--right :button :button--primary :mar--sm--only--rs isLoading:load-this"}} {{action "clickSave"}}>Save</button>
+            <h1 class="nav-bar--sf1__title has-subtitle page__heading has-subheading">Job Specific Questions</h1>
+            <h2 class="nav-bar--sf1__subtitle page__subheading">Front End Developer</h2>
+        </nav>
+        <hr class="show-brkpoint--md">
+        {{#if selectedQuestions}}
+            <ul class="list-group list-group--bordered" id="selectedQs">
+                <div class="list-heading">
+                    <h4 class="list-heading__title has-radius-top">
+                        Selected Questions
+                    </h4>
+                </div>
+                {{#each question in selectedQuestions itemController="question"}}
+                    {{view "question"}}
+                {{/each}}
+                <div class="list-heading">
+                    <h4 class="list-heading__title">
+                        Options
+                    </h4>
+                </div>
+                <label class="input-size pad--sm--ls pad--sm--rs float--right pad--sm--tm pad--sm--bm option-fix">
+                    <input type="checkbox" name="chosen" value="chosen" checked="">
+                </label>
+                <div class="input-size pad--sm--m dots question-text">
+                    Allow candidates to assert skills
+                </div>
+            </ul>
+        {{/if}}
+
+        {{#if positions}}
+            {{#if hasQuestions}}
+                <ul class="list-group list-group--bordered">
+                    {{#each position in positions itemController="position"}}
+                        {{#if position.questions}}
+                            <div class="list-heading">
+                                <h4 class="list-heading__title">
+                                    Questions for a {{position.Name}}
+                                </h4>
+                            </div>
+                            <div>
+                                {{#each question in position.questions itemController="question"}}
+                                    {{view "question"}}
+                                {{/each}}
+                            </div>
+                        {{/if}}
+                    {{/each}}
+                </ul> 
+            {{/if}}
+        {{/if}}
+    </div>
+</div>

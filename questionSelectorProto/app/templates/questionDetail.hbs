@@ -1,0 +1,35 @@
+<nav id="jobOfferNav" class="nav-bar--sf1 mar--sm--bn">
+    <button class="float--right-left button button--secondary mar--sm--only--ls show-brkpoint--sm--only">Back</button>
+    <h1 class="nav-bar--sf1__title has-subtitle page__heading">Question Detail</h1>
+</nav>
+<hr class="show-brkpoint--md mar--sm--bn"/>
+<div class="content__section">
+    <div class="grid grid--vertical">
+        <p>
+            {!tobase7__Form_Element__c.tobase7__Text__c}
+        </p>
+        <ul class="mar--sm--n">
+            <apex:repeat value="{!tobase7__Form_Element__c.tobase7__Answer_Choices__r}" var="answer">
+                <li>{!answer.tobase7__Value__c}</li>
+            </apex:repeat>
+        </ul>
+        <!--Select/Deselect Buttons-->
+        <div class=" first-on--small--only mar--md--txl">
+            <button type="button" class="button button--primary width--full--sm--only" id="selectQuestion">Select Question</button>
+            <button type="button" class="button button--error button--ghost width--full--sm--only hide--i" id="deselectQuestion">Deselect Question</button>
+        </div>
+    </div>
+</div>
+<div class="snack-bar__container hide">
+    <div class="snack-bar">
+        <button type="button" class="close" data-dismiss="snack-bar__container"></button>
+        <div class="selectedQAlert hide--i">
+            <button type="button" href="#" class="button--snack text-primary undo">Undo</button>
+            <span>Question selected</span>
+        </div>
+        <div class="deselectedQAlert hide--i">
+            <button type="button" href="#" class="button--snack text-error undo">Undo</button>
+            <span>Question deselected</span>
+        </div>
+    </div>
+</div>
